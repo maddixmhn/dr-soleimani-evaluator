@@ -17,3 +17,5 @@ docs/*
 !semester/
 semester/*
 !semester/events.json
+
+!docs/registration-trace.json
