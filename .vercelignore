@@ -13,3 +13,7 @@ docs/*
 !docs/seminar.html
 !docs/code-graph.json
 !docs/article.html
+
+!semester/
+semester/*
+!semester/events.json
