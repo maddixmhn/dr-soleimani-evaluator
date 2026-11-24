@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Dr Soleimani Evaluator</string>
-    <string name="title_activity_main">Dr Soleimani Evaluator</string>
+    <string name="app_name">ارزیاب دکتر سلیمانی</string>
+    <string name="title_activity_main">ارزیاب دکتر سلیمانی</string>
     <string name="package_name">org.faran.soleimani.evaluator</string>
     <string name="custom_url_scheme">org.faran.soleimani.evaluator</string>
 </resources>
