@@ -25,7 +25,7 @@ $('#resetFilters').onclick=()=>{for(const id of ['dateFrom','dateTo','agentFilte
 $('#exportCsv').onclick=()=>{if(!report?.agents?.length)return fail('ابتدا دادهٔ قابل گزارش بارگذاری کنید.');const rows=[['agent_id','agent_name','events','completed','failed','duplicate_tasks','success_rate','average_duration_ms','cost','currency'],...report.agents.map(a=>[a.id,a.label,a.events,a.completed,a.failed,a.duplicates,a.successRate??a.success??'',a.avgDuration||'',a.cost,a.currency||''])];const csv='\uFEFF'+rows.map(row=>row.map(cell=>'"'+String(cell??'').replaceAll('"','""')+'"').join(',')).join('\r\n');saveReport(new Blob([csv],{type:'text/csv;charset=utf-8'}),'dr-soleimani-agent-summary.csv')};
 $('#printReport').onclick=()=>{if(!report)return fail('ابتدا داده‌ای برای گزارش بارگذاری کنید.');window.print()};
 {
-  const local = ['localhost', '127.0.0.1'].includes(location.hostname);
+  const local = !window.Capacitor?.isNativePlatform?.() && ['localhost', '127.0.0.1'].includes(location.hostname);
   if (local) document.getElementById('paperclipFeed')?.classList.remove('hidden');
   const refresh = document.createElement('button');
   refresh.className = 'button';
