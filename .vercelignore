@@ -31,3 +31,6 @@ semester/*
 
 !docs/faculty-home.png
 !docs/faculty-semester.png
+
+!docs/service-graph.svg
+!docs/semester-workflow.svg
