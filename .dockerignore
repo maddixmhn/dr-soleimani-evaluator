@@ -1,0 +1,14 @@
+**
+!index.html
+!dashboard.html
+!login.html
+!app.js
+!core.mjs
+!style.css
+!sw.js
+!manifest.webmanifest
+!icon.svg
+!docs/
+!docs/**
+!semester/
+!semester/events.json
