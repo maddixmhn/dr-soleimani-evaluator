@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#19142a">
+  <title>آزمایشگاه ارزیابی | دکتر سلیمانی</title>
+  <link rel="stylesheet" href="./lab.css">
+  <script src="./papaparse-5.7.0.js" defer></script>
+  <script type="module" src="./lab.mjs"></script>
+</head>
+<body>
+<header class="mast"><a class="brand" href="/dashboard.html">ارزیاب دکتر سلیمانی</a><nav><a href="/docs/article.html">مقاله و روش</a><a href="/topology/index.html?design=evaluator-evidence">نقشهٔ زیرساخت</a></nav></header>
+<main>
+  <div class="intro"><p>ارزیابی کارایی سیستم‌های کامپیوتری</p><h1>آزمایشگاه ارزیابی</h1><p>فایل شواهد را وارد کنید، سنجه‌ها را محاسبه کنید و مسیر هر نقش و تسک را در دانشگاه دنبال کنید.</p></div>
+  <nav class="switch" aria-label="بخش‌های آزمایشگاه">
+    <button id="show-calculator" aria-pressed="true">ماشین‌حساب ارزیابی</button>
+    <button id="show-university" aria-pressed="false">نقشه و دفتر تسک</button>
+  </nav>
+  <section id="calculator" aria-label="ماشین‌حساب ارزیابی">
+    <div class="panel input-panel">
+      <div><h2>دادهٔ ورودی</h2><p>JSON، JSONL، NDJSON، CSV و TSV · حداکثر ۸ مگابایت · تحلیل روی همین دستگاه</p></div>
+      <div class="actions">
+        <label class="button primary upload">انتخاب فایل<input id="file" type="file" accept=".json,.jsonl,.ndjson,.csv,.tsv"></label>
+        <button id="archived">شواهد ۲۰۰۰ نقش</button><button id="sample-trace">نمونهٔ ثبت‌نام</button>
+      </div>
+      <p id="load-status" class="message" role="status">یک فایل یا نمونه را انتخاب کنید.</p>
+      <div id="prepare" hidden>
+        <label>مجموعهٔ رکوردها<select id="recordset"></select></label>
+        <details id="mapping-box"><summary>نگاشت ستون‌ها و واحدها</summary><p>ستون مدت و انتظار باید بر حسب میلی‌ثانیه باشند. برای زمان، ISO 8601 با منطقهٔ زمانی یا epoch بر حسب میلی‌ثانیه پذیرفته می‌شود.</p><div id="mapping" class="fields"></div></details>
+        <div class="actions"><label>تفکیک<select id="group-by"><option value="agent">ایجنت</option><option value="task">تسک یا مرحله</option><option value="status">وضعیت</option></select></label><button id="calculate" class="primary">محاسبه</button></div>
+      </div>
+    </div>
+    <section id="results" hidden aria-label="نتایج">
+      <div class="kpis" id="kpis"></div>
+      <div class="panel"><div class="panel-head"><div><h2>اندازه‌گیری و کیفیت داده</h2><p id="quality"></p></div><div class="actions"><button id="export-json">JSON</button><button id="export-csv">CSV</button><button id="print">چاپ / PDF</button></div></div><div class="scroller"><table><thead><tr><th>سنجه</th><th>نمونه</th><th>P50</th><th>P95</th><th>P99</th><th>میانگین</th></tr></thead><tbody id="distribution"></tbody></table></div><p class="muted">صدک‌ها با روش نزدیک‌ترین رتبه محاسبه می‌شوند. نرخ تکمیل بر وضعیت‌های نهایی شناخته‌شده و نرخ ثبت بر رویدادهای زمان‌دار در فاصلهٔ اولین تا آخرین رویداد استوار است.</p><ul id="costs"></ul></div>
+      <div class="panel"><h2>جزئیات به تفکیک</h2><div class="scroller"><table><thead><tr><th>شناسه</th><th>رکورد</th><th>تکمیل</th><th>خطا</th><th>P95 اجرا (ms)</th><th>P95 انتظار (ms)</th></tr></thead><tbody id="group-rows"></tbody></table></div><div class="pager"><button id="group-prev">قبلی</button><span id="group-page"></span><button id="group-next">بعدی</button></div></div>
+    </section>
+  </section>
+  <section id="university" hidden aria-label="نقشهٔ دانشگاه">
+    <div class="panel"><div class="panel-head"><div><h2>سازمان دانشگاه</h2><p id="catalog-status" role="status">در حال خواندن فهرست نقش‌ها…</p></div><a class="button" href="/topology/index.html?design=evaluator-evidence">ویرایشگر نقشه</a></div>
+      <div class="tree" aria-label="درخت سازمان">
+        <div class="tree-root">دانشگاه دیجیتال فاران</div><div class="branches" id="branches"></div>
+        <label>جست‌وجوی شناسهٔ نقش، تسک یا اجرا<input id="role-query" type="search" placeholder="role-0001"></label>
+        <div id="role-nodes" class="leaves"></div>
+      </div>
+      <div class="pager"><button id="role-prev">قبلی</button><span id="role-page"></span><button id="role-next">بعدی</button></div>
+      <div id="role-detail" class="detail" hidden></div>
+    </div>
+    <div class="panel"><h2>گردش‌کارها و تسک‌ها</h2><label>تعریف گردش‌کار<select id="workflow"></select></label><div id="steps" class="steps"></div><p id="step-links" class="muted"></p>
+      <form id="task-form"><h3>ثبت تخصیص محلی</h3><div class="fields"><label>شناسهٔ نقش<input id="task-role" placeholder="role-0001" required></label><label>عنوان تسک<input id="task-title" maxlength="120" required></label></div><button class="primary">افزودن به دفتر</button><p id="task-status" role="status" class="message"></p></form>
+      <div id="task-list"></div><button id="export-tasks">دانلود دفتر تسک</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

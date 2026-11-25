@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'soleimani-evaluator-shell-';
-const CACHE = CACHE_PREFIX + 'v10';
+const CACHE = CACHE_PREFIX + 'v12';
 const SHELL = ['/', '/style.css', '/app.js', '/core.mjs', '/manifest.webmanifest', '/icon.svg'];
 const OFFLINE_PAGES = new Set(['/', '/index.html']);
 

@@ -34,7 +34,17 @@ NIST AI RMF فعالیت‌های مدیریت ریسک را در کارکرده
 
 دکتر سلیمانی در این مرحله یک داشبورد مرورگرمحور است که به کمک رویدادهای قابل ردیابی کارکرد ارزیابی مستقل را شفاف می‌کند. سهم این نمونه، اتصال گام‌به‌گام عملکرد ایجنت به شواهد و پیشنهاد اصلاحی است؛ سامانه هنوز نه عامل‌های دانشگاه را متوقف می‌کند و نه پیش‌بینی خود را مبنای تصمیم قرار می‌دهد. ارزیابی واقعی پس از تعیین rubric و دسترسی داده انجام خواهد شد.
 
+## نقشهٔ تعاملی شواهد
+
+نقشهٔ شواهد با ویرایشگر مستقل Homelable ساخته شد. در نقشه، شناسهٔ وظیفه در Paperclip، اجرای n8n و رسید Moodle به شواهد مشترک وصل می‌شوند. داوری ارزیاب بر همین رویدادها و قواعد آموزشی تکیه دارد و وضعیت دسترس‌پذیری سرویس، سنجهٔ جداگانه‌ای است.
+
+![نقشهٔ نمونهٔ جریان شواهد ارزیابی در ویرایشگر Homelable](homelable-evidence.jpg)
+
+[باز کردن نقشهٔ تعاملی](../topology/index.html?design=evaluator-evidence)
+
 ## منابع
+
+- Pouzor. (2026). *Homelable v3.8.0* [نرم‌افزار، مجوز MIT]. https://github.com/Pouzor/homelable/tree/v3.8.0
 
 1. Tabassi, E. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. NIST AI 100-1. https://doi.org/10.6028/NIST.AI.100-1
 2. Wiedmann, L., Girrbach, L., Schmid, C., & Akata, Z. (2026). *Agents Are Systems, Not Models: Rethinking Agentic Evaluation*. arXiv:2610.01618, v1, پیش‌چاپ. https://arxiv.org/abs/2610.01618

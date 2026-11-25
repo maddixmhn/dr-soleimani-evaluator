@@ -4,10 +4,18 @@ await rm(web, { recursive: true, force: true });
 await mkdir(web, { recursive: true });
 const files = ['index.html', 'login.html', 'dashboard.html', 'style.css', 'app.js', 'core.mjs', 'semester/events.json', 'sw.js', 'manifest.webmanifest', 'icon.svg'];
 files.push(
+  'lab/index.html',
+  'lab/lab.css',
+  'lab/lab.mjs',
+  'lab/metrics.mjs',
+  'lab/catalog.json',
+  'lab/papaparse-5.7.0.js',
+  'lab/PAPAPARSE-LICENSE.txt',
   'docs/ARTICLE.md',
   'docs/PROJECT-PLAN.md',
   'docs/QUICKSTART-FA.md',
   'docs/article.html',
+  'docs/homelable-evidence.jpg',
   'docs/code-graph.json',
   'docs/docker-desktop.jpg',
   'docs/evaluation-article.pdf',
@@ -37,4 +45,5 @@ for (const file of files) {
   }
 }
 await cp(new URL('./android-documents.js', import.meta.url), new URL('android-documents.js', web));
+await cp(new URL('./topology/', import.meta.url), new URL('topology/', web), { recursive: true });
 console.log('Android web assets synced.');

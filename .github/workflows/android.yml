@@ -8,6 +8,8 @@ on:
       - android/**
       - android-documents.js
       - app.js
+      - lab/**
+      - topology/**
       - copy-web.mjs
       - package-lock.json
       - capacitor.config.json
