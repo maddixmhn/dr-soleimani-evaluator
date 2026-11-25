@@ -9,7 +9,7 @@ for filename in ("index.html", "dashboard.html", "login.html", "app.js", "site.c
     if source.is_file():
         copy2(source, output / filename)
 for source in (root / "docs").iterdir():
-    if source.suffix in {".html", ".md", ".json", ".pdf", ".png", ".jpg", ".svg"}:
+    if source.suffix in {".html", ".md", ".json", ".pdf", ".png", ".jpg", ".svg"} or source.name == "presentation.css":
         copy2(source, output / "docs" / source.name)
 copytree(root / "lab", output / "lab", dirs_exist_ok=True)
 copytree(root / "semester", output / "semester", dirs_exist_ok=True)

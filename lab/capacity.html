@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="مقایسهٔ ظرفیت، انتظار و رد درخواست در صف‌های مارکوفی">
+  <title>مدل‌سازی ظرفیت صف | ارزیاب دکتر سلیمانی</title>
+  <link rel="stylesheet" href="./lab.css">
+  <link rel="stylesheet" href="./capacity.css">
+  <script type="module" src="./capacity.mjs"></script>
+</head>
+<body>
+<header class="mast"><a class="brand" href="/dashboard.html">ارزیاب دکتر سلیمانی</a><nav aria-label="پیوندهای پژوهش"><a href="./index.html">آزمایشگاه داده</a><a href="/docs/article.html">مقالهٔ ارزیابی</a></nav></header>
+<main>
+  <div class="intro"><p>آزمایشگاه ارزیابی کارایی</p><h1>مدل‌سازی ظرفیت صف</h1><p>دو طرح را با بار یکسان مقایسه کنید و ببینید افزایش ظرفیت چه اثری بر انتظار، رد درخواست و گذردهی دارد.</p></div>
+  <form class="panel" id="queue-form" autocomplete="off">
+    <div class="fields">
+      <label>نرخ ورود (درخواست بر ثانیه)<input name="arrival" type="number" value="0.8" min="0" max="1000000" step="any" inputmode="decimal" required></label>
+      <label>آستانهٔ انتظار (ثانیه)<input name="threshold" type="number" value="2" min="0" max="86400" step="any" inputmode="decimal" required></label>
+      <label>هدف شروع به‌موقع (درصد)<input name="target" type="number" value="95" min="0.01" max="100" step="any" inputmode="decimal" required></label>
+    </div>
+    <div class="capacity-grid">
+      <fieldset><legend>طرح پایه</legend><div class="fields">
+        <label>نرخ خدمت هر سرور<input name="serviceA" type="number" value="1" min="0.000001" max="1000000" step="any" inputmode="decimal" required></label>
+        <label>تعداد خدمت‌دهنده<input name="serversA" type="number" value="1" min="1" max="100" step="1" required></label>
+        <label>ظرفیت کل<input name="capacityA" type="number" min="1" max="5000" step="1" placeholder="نامحدود" aria-describedby="capacity-hint"></label>
+      </div></fieldset>
+      <fieldset><legend>طرح جایگزین</legend><div class="fields">
+        <label>نرخ خدمت هر سرور<input name="serviceB" type="number" value="1" min="0.000001" max="1000000" step="any" inputmode="decimal" required></label>
+        <label>تعداد خدمت‌دهنده<input name="serversB" type="number" value="2" min="1" max="100" step="1" required></label>
+        <label>ظرفیت کل<input name="capacityB" type="number" min="1" max="5000" step="1" placeholder="نامحدود" aria-describedby="capacity-hint"></label>
+      </div></fieldset>
+    </div>
+    <p class="muted" id="capacity-hint">نرخ خدمت بر حسب درخواست بر ثانیه است. ظرفیت کل، درخواست‌های داخل صف و در حال خدمت را شامل می‌شود. برای ظرفیت نامحدود این خانه را خالی بگذارید.</p>
+    <div class="actions"><button class="primary" type="submit">مقایسهٔ ظرفیت</button><button id="queue-export" type="button" disabled>دریافت نتیجهٔ JSON</button></div>
+    <p id="queue-status" class="message" role="status"></p>
+  </form>
+  <section class="panel" aria-labelledby="comparison" id="queue-results" hidden>
+    <h2 id="comparison">مقایسهٔ سنجه‌ها</h2>
+    <div class="scroller"><table class="capacity-table"><thead><tr><th scope="col">سنجه</th><th scope="col">طرح پایه</th><th scope="col">طرح جایگزین</th></tr></thead><tbody id="queue-metrics"></tbody></table></div>
+    <p class="muted">زمان انتظار و پاسخ فقط برای درخواست‌های پذیرفته‌شده‌اند. «پذیرش و شروع تا آستانه» سهمی از کل درخواست‌های ورودی است.</p>
+    <p id="queue-sizing" class="detail" role="status"></p>
+    <h3>حساسیت به نرخ ورود</h3>
+    <p id="queue-chart-note" class="muted">خط پیوسته طرح پایه و خط خط‌چین طرح جایگزین را نشان می‌دهد. قسمت‌های ناپایدار صف نامحدود در نمودار رسم نمی‌شوند.</p>
+    <canvas id="queue-chart" width="850" height="340" role="img" aria-label="سهم ورودهایی که تا آستانه خدمت را شروع می‌کنند بر حسب نرخ ورود" aria-describedby="queue-chart-note"></canvas>
+    <details><summary>جدول حساسیت برای بازبینی</summary>
+      <div class="scroller"><table class="capacity-table"><thead><tr><th scope="col">ورود بر ثانیه</th><th scope="col">شروع به‌موقع در پایه</th><th scope="col">شروع به‌موقع در جایگزین</th></tr></thead><tbody id="queue-sensitivity"></tbody></table></div>
+    </details>
+  </section>
+  <details class="panel">
+    <summary>فرض‌ها و روش محاسبه</summary>
+    <p>مدل، ورود پواسونی، خدمت نمایی مستقل، خدمت‌دهنده‌های یکسان در هر طرح و ترتیب ورود به صف را فرض می‌کند. مقدارهای این صفحه خروجی تحلیلی برای ورودی انتخاب‌شده‌اند. برای انطباق با یک سامانهٔ عملیاتی، باید این فرض‌ها با ردهای همان سامانه بررسی شوند.</p>
+    <p>صف نامحدود زمانی پایدار است که نرخ ورود از مجموع ظرفیت خدمت کمتر باشد. در صف محدود، حالت پر باعث رد ورود می‌شود. میانگین انتظار با توزیع ایستا و گذردهی پذیرفته‌شده محاسبه می‌شود.</p>
+    <p><a href="https://web.mit.edu/1.041/www/lectures/L8-queuing-models-2026sp.pdf">مدل‌های صف در MIT</a> · <a href="https://www.math.cuhk.edu.hk/course_builder/2425/math4240/tuto12.pdf">توازن حالت و صف محدود در CUHK</a></p>
+  </details>
+</main>
+<footer aria-label="انتساب پروژه"><div class="publisher-credit" dir="ltr" style="text-align:center;padding:.5rem .75rem;font-size:.875rem"><bdi lang="en" dir="ltr">Powered by</bdi> <a href="https://github.com/maddixmhn" rel="me"><bdi dir="rtl">محمد مهرانی</bdi></a></div></footer>
+</body>
+</html>

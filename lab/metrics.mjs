@@ -103,6 +103,9 @@ function decimal(value) {
 function timestamp(value) {
   if (typeof value === 'number') return Number.isFinite(new Date(value).valueOf()) ? value : null;
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}(?:$|T.+(?:Z|[+-]\d{2}:\d{2})$)/i.test(value)) return null;
+  const day = value.slice(0, 10);
+  const midnight = new Date(day);
+  if (!Number.isFinite(midnight.valueOf()) || midnight.toISOString().slice(0, 10) !== day) return null;
   const time = Date.parse(value);
   return Number.isFinite(time) ? time : null;
 }

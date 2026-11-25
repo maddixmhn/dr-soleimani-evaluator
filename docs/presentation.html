@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ارائهٔ درس ارزیابی کارایی سیستم‌های کامپیوتری، شواهد اندازه‌گیری و مدل‌سازی صف">
+  <title>ارائهٔ درس ارزیابی کارایی | ارزیاب دکتر سلیمانی</title>
+  <link rel="stylesheet" href="/docs/presentation.css">
+</head>
+<body class="evaluation">
+<header><div class="wrap"><strong>ارزیاب مستقل دکتر سلیمانی</strong><nav class="links" aria-label="پیوندهای پروژه"><a href="/">صفحهٔ اصلی</a><a href="/lab/index.html">آزمایشگاه</a><a href="https://faran-mu.vercel.app/docs/presentation.html">ارائهٔ درس سمینار</a></nav></div></header>
+<main class="wrap">
+  <div class="hero">
+    <p class="meta">درس ارزیابی کارایی سیستم‌های کامپیوتری · استاد دکتر علی سلیمانی · دانشجو محمد مهرانی</p>
+    <h1>از رد اجرای ثبت‌نام تا تصمیم ظرفیت</h1>
+    <p>ارزیاب مستقل فاران دو پرسش را دنبال می‌کند. در اجرای ثبت‌شده چه اتفاقی افتاده است؟ با یک مدل و بار تعریف‌شده، تغییر ظرفیت چه پیامدی دارد؟ برای دفاع، مسیر اندازه‌گیری را کنار مدل تحلیلی باز کنید تا تفاوت مشاهده و پیش‌بینی روشن باشد.</p>
+    <div class="links"><a class="primary print-hidden" href="/docs/evaluation-presentation.pdf" download>دانلود جزوهٔ ارائه (PDF)</a><a class="secondary" href="/docs/evaluation-article.pdf">مقالهٔ کامل (PDF)</a><a href="/docs/article.html">مقالهٔ وب</a><a href="https://github.com/maddixmhn/dr-soleimani-evaluator">گیت‌هاب</a></div>
+  </div>
+  <nav class="links toc" aria-label="فهرست ارائه"><a href="#portfolio">اجزای پروژه</a><a href="#math">فرمول‌ها</a><a href="#implementation">کد و بازتولید</a><a href="#results">نتایج و آزمون‌ها</a><a href="#defense">ترتیب دفاع</a><a href="#sources">منابع</a></nav>
+  <section id="portfolio" class="block">
+    <h2>اجزای پروژه و مسیر نمایش</h2>
+    <div class="stack">
+      <article class="card"><h3>داشبورد و قرارداد شواهد</h3><p>وضعیت اجراها، خطاهای قرارداد، تکرار تسک، موفقیت هر نقش و روند توصیفی روزها را نشان می‌دهد. وضعیت ناشناخته از مخرج موفقیت کنار می‌رود.</p><div class="links"><a href="/dashboard.html">داشبورد ارزیاب</a><a href="/docs/evaluation-method.md">روش محاسبهٔ داشبورد</a></div></article>
+      <article class="card"><h3>آزمایشگاه ورود داده</h3><p>JSON، JSONL، NDJSON، CSV و TSV در دستگاه کاربر خوانده می‌شوند. واحدها، ستون‌ها و گروه‌بندی قابل انتخاب‌اند. مدت خدمت و انتظار جدا گزارش می‌شوند.</p><div class="links"><a href="/lab/index.html">ماشین‌حساب داده</a><a href="/docs/registration-trace.json">دادهٔ تمرین ثبت‌نام</a><a href="/lab/METHOD-FA.md">قرارداد آزمایشگاه</a></div></article>
+      <article class="card"><h3>مدل‌سازی و تصمیم ظرفیت</h3><p>یک یا چند خدمت‌دهنده با صف محدود یا نامحدود مقایسه می‌شوند. ابزار احتمال رد، انتظار، پاسخ، گذردهی، حساسیت به نرخ ورود و حداقل تعداد سرور برای رسیدن به هدف را حساب می‌کند.</p><div class="links"><a href="/lab/capacity.html">محاسبه‌گر ظرفیت و خروجی JSON</a><a href="#capacity">فرمول‌های صف</a></div></article>
+      <article class="card"><h3>نقشهٔ شواهد و بستهٔ همراه</h3><p>نقشه، نقش‌های ساختگی را به بایگانی اجرا وصل می‌کند. دفتر تخصیص در دستگاه ذخیره می‌شود. نسخهٔ Android شمارهٔ ۱٫۳٫۰ آزمایشگاه داده، شواهد و مقاله را دارد. محاسبه‌گر ظرفیت در این ارائه از نسخهٔ وب باز می‌شود.</p><div class="links"><a href="/topology/index.html?design=evaluator-evidence">نقشهٔ شواهد</a><a href="/lab/index.html#university">دفتر تسک</a><a href="https://github.com/maddixmhn/dr-soleimani-evaluator/releases/download/android-v1.3.0/dr-soleimani-evaluator-1.3.0.apk">دانلود APK ۱٫۳٫۰</a></div></article>
+    </div>
+  </section>
+  <section id="math" class="block">
+    <h2>فرمول‌ها و اتصال آن‌ها به کد</h2>
+    <h3>مدت اجرای معتبر، صدک و نرخ تکمیل</h3>
+    <div class="formula" dir="ltr">wait = t_start − t_queue
+service = t_end − t_start
+Pₚ = x₍⌈p × n⌉₎     (ordered observations)
+completion = N_completed / (N_completed + N_failed + N_blocked + N_cancelled)</div>
+    <p>صدک روش نزدیک‌ترین رتبه دارد. دادهٔ فاقد زمان معتبر از سنجهٔ زمانی کنار می‌رود. در آزمایشگاه، ارسال دوبارهٔ همان رویداد یک‌بار حساب می‌شود و شناسهٔ متناقض از تحلیل آن مجموعه کنار می‌رود. تکرار اجرای یک تسک با شناسهٔ جدید در داشبورد علامت بررسی است. تعداد نمونه باید همراه صدک گزارش شود.</p>
+    <h3>روند توصیفی، شتاب و مارکوف</h3>
+    <div class="formula" dir="ltr">b = Σᵢ₌₀⁴ (i − 2)(rᵢ − r̄) / 10
+next estimate = clip(r₄ + b, 0, 1)
+S(N) = 1 / ((1 − α) + α/N)
+DTMC: pₜ₊₁ = pₜP        CTMC: πQ = 0,  Σᵢ πᵢ = 1</div>
+    <p>داشبورد شیب پنج نرخ روزانهٔ آخر را برآورد می‌کند و آن را به آخرین نرخ می‌افزاید. دامنهٔ نمایش بر پراکندگی همان پنج مقدار استوار است. آمـدال و مثال‌های ماتریس مارکوف در آزمون‌های فصل اجرا می‌شوند. بازهٔ روند در رابط معنای فاصلهٔ اطمینان ندارد.</p>
+    <h3 id="capacity">مدل صف، توازن و تعهد خدمت</h3>
+    <div class="formula" dir="ltr">ρ = λ/(cμ),     M/M/c is stationary only for ρ &lt; 1
+w₀ = 1,     wₙ = wₙ₋₁ × λ/(min(n,c)μ),     πₙ = wₙ / Σⱼwⱼ
+λ_eff = λ(1 − π_K)     for finite total capacity K
+Lq = λ_eff Wq,     R = Wq + 1/μ
+M/M/c: P(Wq &gt; τ) = C(c, λ/μ) exp(−(cμ−λ)τ)
+P(accepted and service starts by τ) = (1 − P_block) × P(Wq ≤ τ | accepted)</div>
+    <p><bdi>λ</bdi> نرخ ورود، <bdi>μ</bdi> نرخ خدمت هر سرور، <bdi>c</bdi> تعداد خدمت‌دهنده و <bdi>K</bdi> تعداد کل جایگاه‌ها در صف و خدمت است. موازنه در فضای لگاریتمی انجام می‌شود تا وزن‌های بزرگ سرریز نکنند. در صف محدود، یک ورودی پذیرفته‌شده که <bdi>n ≥ c</bdi> کار جلوی خود می‌بیند برای <bdi>n − c + 1</bdi> تکمیل خدمت منتظر می‌ماند. موتور دُم توزیع ارلنگ را بر وضعیت‌های ممکن وزن‌دهی می‌کند.</p>
+    <p>مدل حالت پایدار، ورود پواسونی، خدمت نمایی مستقل و نظم ورود را فرض می‌کند. گزارش رد درخواست روی کل ورودها و میانگین انتظار روی پذیرفته‌شده‌ها محاسبه می‌شود. برای مقایسهٔ ظرفیت دو طرح، نرخ ورود و آستانه در هر دو یکسان‌اند.</p>
+  </section>
+  <section id="implementation" class="block">
+    <h2>پیاده‌سازی و بازتولید</h2>
+    <table><thead><tr><th scope="col">زبان یا ابزار</th><th scope="col">کاربرد</th><th scope="col">کد</th></tr></thead><tbody>
+      <tr><th scope="row">JavaScript و ES Modules</th><td>قرارداد شواهد، تحلیل گروه‌ها، صدک نزدیک‌ترین رتبه، مدیریت شناسه‌های متناقض و اعتبار تاریخ.</td><td><a href="https://github.com/maddixmhn/dr-soleimani-evaluator/blob/main/core.mjs">داشبورد</a> · <a href="https://github.com/maddixmhn/dr-soleimani-evaluator/blob/main/lab/metrics.mjs">سنجه‌های آزمایشگاه</a></td></tr>
+      <tr><th scope="row">JavaScript و Canvas</th><td>موازنهٔ تولد و مرگ، احتمال عبور از آستانه، جست‌وجوی حداقل ظرفیت، نمودار و JSON.</td><td><a href="https://github.com/maddixmhn/dr-soleimani-evaluator/blob/main/lab/queue-model.mjs">موتور تحلیلی</a> · <a href="https://github.com/maddixmhn/dr-soleimani-evaluator/blob/main/lab/capacity.mjs">رابط و نمودار</a></td></tr>
+      <tr><th scope="row">Node.js و Papa Parse</th><td>تجزیهٔ داده جدولی، بررسی رد زمان، آزمون مرجع و شبیه‌سازی قابل تکرار.</td><td><a href="https://github.com/maddixmhn/dr-soleimani-evaluator/blob/main/skills/performance-evaluation/trace.mjs">شکستن زمان رد</a> · <a href="https://github.com/maddixmhn/dr-soleimani-evaluator/tree/main/tests">آزمون‌ها</a></td></tr>
+      <tr><th scope="row">HTML، CSS، Capacitor و Gradle</th><td>رابط فارسی، بستهٔ وب، ذخیره و چاپ در Android.</td><td><a href="https://github.com/maddixmhn/dr-soleimani-evaluator/blob/main/copy-web.mjs">بسته‌بندی وب</a> · <a href="https://github.com/maddixmhn/dr-soleimani-evaluator/tree/main/android">پروژهٔ Android</a></td></tr>
+    </tbody></table>
+    <pre dir="ltr"><code>node --test tests/*.test.mjs
+node skills/performance-evaluation/trace.mjs docs/registration-trace.json
+node copy-web.mjs</code></pre>
+  </section>
+  <section id="results" class="block">
+    <h2>نتایج، شواهد و نگاشت به هفت فصل</h2>
+    <table><thead><tr><th scope="col">نوع بررسی</th><th scope="col">نتیجه</th><th scope="col">محدودهٔ تفسیر</th></tr></thead><tbody>
+      <tr><th scope="row">مشاهدهٔ ثبت‌نام</th><td>۲۸٫۶۳۳ ثانیه کل. n8n پس از ۱۴٫۵۳۶ ثانیه شروع کرد و ۲٫۶۱۷ ثانیه خدمت داشت.</td><td>یک اجرای محلی. بازهٔ شروع شامل آماده‌سازی CLI است. <a href="/docs/registration-trace.json">شاهد خام</a></td></tr>
+      <tr><th scope="row">مشاهدهٔ مسیر گرم و سرد</th><td>میانهٔ تحویل تا نخستین گره ۴۶٫۹۳۷ ثانیه در CLI و ۴٫۸۱۱ در worker. میانهٔ صف Redis برابر ۶٫۷۵۵ میلی‌ثانیه.</td><td>از سه مشاهده در هر مسیر نمی‌توان صدک عملیاتی یا اثر قطعی علت را برآورد کرد. <a href="https://faran-mu.vercel.app/docs/seminar-results.json">جدول اجراها</a></td></tr>
+      <tr><th scope="row">شبیه‌سازی M/M/1</th><td>انتظار نظری ۱٫۶۶۶۷ ثانیه و انتظار شبیه‌سازی ۱٫۶۷۵۲ ثانیه، با ۵۰٬۰۰۰ درخواست و ۲٬۰۰۰ درخواست گرم‌کردن.</td><td>بذر ثابت و بار مصنوعی. <a href="https://github.com/maddixmhn/dr-soleimani-evaluator/blob/main/tests/course-performance.test.mjs">آزمون شبیه‌سازی</a></td></tr>
+      <tr><th scope="row">مدل تحلیلی دو ظرفیت</th><td>با نرخ ورود ۰٫۸ و نرخ خدمت هر سرور ۱ بر ثانیه، انتظار از ۴ به ۰٫۱۹۰۵ ثانیه رسید. سهم شروع در دو ثانیه از ۴۶٫۳۷۴٪ به ۹۷٫۹۲۶٪ رسید.</td><td>ورودی پیش‌فرض، یک در برابر دو سرور. هدف ۹۵٪ با حداقل دو سرور مدل برآورده شد. <a href="/lab/capacity.html">بازتولید آنلاین</a></td></tr>
+      <tr><th scope="row">آزمون نرم‌افزار</th><td>۱۵۳ آزمون و زیرآزمون پاس شد، از جمله ۱۲۶ نقطهٔ بار ۰ تا ۱۲۵٪ و کنترل تاریخ ناممکن و حد ۵۰٬۰۰۰ رکورد.</td><td>این تعداد پوشش رگرسیون و سناریوهای مرجع را نشان می‌دهد. <a href="https://github.com/maddixmhn/dr-soleimani-evaluator/tree/main/tests">کد آزمون‌ها</a></td></tr>
+    </tbody></table>
+    <p>ترتیب درس در آزمون‌ها حفظ شده است. فصل اول مدل بار و قانون آمـدال، فصل دوم قانون لیتل و M/M/1، فصل سوم متغیر تصادفی و توزیع، فصل‌های چهارم و پنجم DTMC و CTMC، فصل ششم صف محدود و فصل هفتم صف چندسروره و مدل‌های تکمیلی را پوشش می‌دهد. آزمون‌های فصل هفتم همچنین M/M/∞، M/G/1، ارلنگ B و اولویت را بررسی می‌کنند. رابط ظرفیت مدل‌های <bdi>M/M/c</bdi> و <bdi>M/M/c/K</bdi> را در اختیار می‌گذارد.</p>
+    <div class="stack evidence">
+      <figure><a href="/docs/verified-evaluation-lab.jpg"><img src="/docs/verified-evaluation-lab.jpg" alt="نمای واقعی آزمایشگاه حین تحلیل رد ثبت‌نام"></a><figcaption>تحلیل یک رد ثبت‌نام در ماشین‌حساب. <a href="/lab/index.html">آزمایشگاه روی وب</a></figcaption></figure>
+      <figure><a href="/docs/homelable-evidence.jpg"><img src="/docs/homelable-evidence.jpg" alt="نمای بایگانی‌شدهٔ نقشهٔ شواهد ارزیاب"></a><figcaption>مسیرهای پیگیری شواهد در نقشه. <a href="/topology/index.html?design=evaluator-evidence">همین نما روی وب</a></figcaption></figure>
+    </div>
+  </section>
+  <section id="defense" class="block">
+    <h2>ترتیب پیشنهادی دفاع</h2>
+    <ol><li>نمونهٔ ثبت‌نام را وارد کنید. اختلاف انتظار و خدمت را از دو مهر زمانی نشان بدهید.</li><li>در محاسبه‌گر، نرخ ورود را از ۰٫۸ به ۱٫۲ ببرید. توضیح دهید چرا طرح تک‌سرور نامحدود حالت پایدار ندارد.</li><li>ظرفیت کل طرح پایه را ۳ بگذارید. احتمال رد و انتظار پذیرفته‌شدگان را جدا بخوانید و JSON را دانلود کنید.</li><li>به آستانهٔ دو ثانیه و هدف ۹۵٪ برگردید. توضیح دهید برای اعتبارسنجی مدل با بار عملیاتی چه داده‌ای لازم است.</li></ol>
+  </section>
+  <section id="sources" class="block">
+    <h2>منابع</h2>
+    <ul><li>دکتر علی سلیمانی، جزوه و فصل‌های درس در <a href="https://lms.faranlms.com/course/view.php?id=8782">مودل فاران، با ورود دانشجویی</a>.</li><li>John D. C. Little، اثبات رابطهٔ <bdi>L = λW</bdi>، ۱۹۶۱. <a href="https://doi.org/10.1287/opre.9.3.383">مقالهٔ اصلی</a></li><li>Gene M. Amdahl، محدودیت افزایش سرعت موازی، ۱۹۶۷. <a href="https://www.cs.cmu.edu/~18742/papers/Amdahl1967.pdf">مقالهٔ اصلی</a></li><li>مدل صف نامحدود و محدود. <a href="https://web.mit.edu/1.041/www/lectures/L8-queuing-models-2026sp.pdf">جزوهٔ دانشگاه MIT</a> · <a href="https://www.math.cuhk.edu.hk/course_builder/2425/math4240/tuto12.pdf">روابط توازن در دانشگاه CUHK</a></li><li>مستند فنی پروژه. <a href="/docs/article.html">مقاله</a> · <a href="/docs/evaluation-article.pdf">نسخهٔ کامل PDF</a> · <a href="https://github.com/maddixmhn/dr-soleimani-evaluator">مخزن ارزیاب</a></li></ul>
+  </section>
+</main>
+<footer><div class="wrap"><span>درس ارزیابی کارایی سیستم‌های کامپیوتری</span><span class="publisher-credit" dir="ltr"><bdi lang="en">Powered by</bdi> <a href="https://github.com/maddixmhn" rel="me"><bdi dir="rtl">محمد مهرانی</bdi></a></span></div></footer>
+</body>
+</html>

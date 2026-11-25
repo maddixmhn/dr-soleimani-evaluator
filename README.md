@@ -2,6 +2,8 @@
 
 <div align="center">
 
+[**صفحهٔ ارائهٔ درس**](https://dr-soleimani-evaluator.vercel.app/docs/presentation.html) · [**دانلود جزوهٔ ارائه (PDF)**](https://dr-soleimani-evaluator.vercel.app/docs/evaluation-presentation.pdf)
+
 [**دانلود مقالهٔ ارزیابی (PDF)**](https://dr-soleimani-evaluator.vercel.app/docs/evaluation-article.pdf) · [**خواندن مقاله**](docs/article.html) · [**راهنمای فارسی Docker**](docs/QUICKSTART-FA.md)
 
 </div>
