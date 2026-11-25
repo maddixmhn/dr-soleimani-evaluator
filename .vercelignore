@@ -42,3 +42,12 @@ semester/*
 !docs/docker-desktop.jpg
 
 !docs/evaluation-article.pdf
+
+!topology/
+!topology/**
+!docs/homelable-evidence.jpg
+
+!lab/
+!lab/**
+!docs/verified-organization.jpg
+!docs/verified-evaluation-lab.jpg
