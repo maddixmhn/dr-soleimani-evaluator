@@ -1,6 +1,6 @@
 const CACHE_PREFIX = 'soleimani-evaluator-shell-';
-const CACHE = CACHE_PREFIX + 'v14';
-const SHELL = ['/', '/style.css', '/app.js', '/core.mjs', '/manifest.webmanifest', '/icon.svg',
+const CACHE = CACHE_PREFIX + 'v16';
+const SHELL = ['/', '/style.css', '/studio.css', '/studio.js', '/docs/project-status.json', '/app.js', '/core.mjs', '/manifest.webmanifest', '/icon.svg',
   '/lab/capacity.html', '/lab/lab.css', '/lab/capacity.css', '/lab/capacity.mjs', '/lab/queue-model.mjs'];
 const OFFLINE_PAGES = new Set(['/', '/index.html']);
 

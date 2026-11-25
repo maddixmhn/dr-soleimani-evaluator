@@ -54,3 +54,9 @@ semester/*
 !lab/**
 !docs/verified-organization.jpg
 !docs/verified-evaluation-lab.jpg
+
+!studio.css
+!studio.js
+!docs/project-status.json
+!api/
+!api/project-status.js

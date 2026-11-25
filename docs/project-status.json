@@ -1,0 +1,29 @@
+{
+  "schema": "project-status/v1",
+  "scope": "archived-synthetic",
+  "recordedAt": "2026-11-23T19:32:13.702Z",
+  "run": "20",
+  "metrics": [
+    {
+      "label": "زمان کل ثبت‌نام",
+      "value": 28.633,
+      "unit": "seconds"
+    },
+    {
+      "label": "تحویل تا شروع n8n",
+      "value": 14.536,
+      "unit": "seconds"
+    },
+    {
+      "label": "زمان خدمت n8n",
+      "value": 2.617,
+      "unit": "seconds"
+    },
+    {
+      "label": "سهم تحویل تا شروع n8n",
+      "value": 0.5076659798135019,
+      "unit": "ratio"
+    }
+  ],
+  "source": "/docs/registration-trace.json"
+}

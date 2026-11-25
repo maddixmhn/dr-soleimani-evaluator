@@ -1,0 +1,128 @@
+{
+  "name": "ارزیاب دکتر سلیمانی",
+  "mark": "س",
+  "theme": "evaluator",
+  "course": "ارزیابی کارایی سیستم‌های کامپیوتری · دکتر علی سلیمانی",
+  "headline": "از شواهد اجرا تا تصمیم ظرفیت",
+  "intro": "دادهٔ اجرا را تحلیل کنید، محل انتظار را پیدا کنید و اثر افزایش بار یا تغییر ظرفیت را با مدل صف بسنجید.",
+  "image": "/docs/verified-evaluation-lab.jpg",
+  "imageAlt": "نمای بایگانی‌شدهٔ تحلیل رد ثبت‌نام در آزمایشگاه",
+  "preview": "/lab/index.html",
+  "previewLabel": "باز کردن آزمایشگاه داده",
+  "peer": "https://faran-mu.vercel.app",
+  "peerName": "دانشگاه دیجیتال فاران",
+  "github": "https://github.com/maddixmhn/dr-soleimani-evaluator",
+  "nav": [
+    [
+      "ابزارهای تحلیل",
+      "#tools"
+    ],
+    [
+      "ارائهٔ درس",
+      "/docs/presentation.html"
+    ],
+    [
+      "دانلود",
+      "#downloads"
+    ]
+  ],
+  "primary": [
+    [
+      "آزمایشگاه داده",
+      "/lab/index.html"
+    ],
+    [
+      "مدل ظرفیت صف",
+      "/lab/capacity.html"
+    ]
+  ],
+  "tools": [
+    [
+      "آزمایشگاه داده",
+      "تحلیل JSON و CSV، صدک‌ها، نگاشت ستون و خروجی.",
+      "/lab/index.html",
+      "تحلیل"
+    ],
+    [
+      "ظرفیت صف و هدف خدمت",
+      "مقایسهٔ دو طرح، احتمال رد و حداقل تعداد خدمت‌دهنده.",
+      "/lab/capacity.html",
+      "مدل تحلیلی"
+    ],
+    [
+      "رد ثبت‌نام فاران",
+      "مشاهدهٔ انتظار، خدمت و تحویل در سه مرحله.",
+      "/docs/registration-trace.json",
+      "دادهٔ JSON"
+    ],
+    [
+      "گزارش نیمسال",
+      "بازپخش رویداد و بررسی تصمیم آموزشی.",
+      "/docs/semester-web.html",
+      "شواهد"
+    ],
+    [
+      "نقشهٔ زیرساخت و شواهد",
+      "نقشهٔ تعاملی ارتباط سرویس و شاهد اجرا.",
+      "/topology/index.html?design=evaluator-evidence",
+      "نقشه"
+    ],
+    [
+      "دفتر تخصیص و شواهد نقش",
+      "مرور گردش‌کار و تخصیص محلی روی همان دستگاه.",
+      "/lab/index.html#university",
+      "دفتر"
+    ],
+    [
+      "مقایسهٔ CLI و worker",
+      "آمار اجراهای محلی و سنجهٔ مستقل صف Redis.",
+      "https://faran-mu.vercel.app/docs/seminar-results.json",
+      "دادهٔ JSON"
+    ],
+    [
+      "مؤسسه و محیط آزمایشی فاران",
+      "درگاه دانشگاه همراه و آزمایش گردش‌کار.",
+      "https://faran-mu.vercel.app/",
+      "پروژهٔ همراه"
+    ]
+  ],
+  "services": [],
+  "downloads": [
+    [
+      "برنامهٔ اندروید ارزیاب",
+      "نسخهٔ ۱٫۴٫۰، نصب مستقیم روی Android ۷ و بالاتر.",
+      "https://github.com/maddixmhn/dr-soleimani-evaluator/releases/download/android-v1.4.0/dr-soleimani-evaluator-1.4.0.apk",
+      "APK"
+    ],
+    [
+      "ارائهٔ درس ارزیابی",
+      "فرمول‌ها، آزمون‌ها، منابع و مسیر دفاع.",
+      "/docs/presentation.html",
+      "ارائه"
+    ],
+    [
+      "جزوهٔ ارائه",
+      "نسخهٔ چهارصفحه‌ای آمادهٔ دفاع.",
+      "/docs/evaluation-presentation.pdf",
+      "PDF"
+    ],
+    [
+      "مقالهٔ کامل ارزیابی",
+      "مبانی، روش و نتیجه‌های فنی.",
+      "/docs/evaluation-article.pdf",
+      "PDF"
+    ],
+    [
+      "مقالهٔ وب",
+      "آزمایش‌ها، محدودیت‌ها و مستند شواهد.",
+      "/docs/article.html",
+      "مقاله"
+    ],
+    [
+      "نصب و کد پروژه",
+      "راهنمای استقرار محلی پروژه.",
+      "/docs/QUICKSTART-FA.md",
+      "راهنما"
+    ]
+  ]
+}
